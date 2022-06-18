@@ -1,4 +1,4 @@
-workspace(name = "rust-mono")
+workspace(name = "rustmono")
 
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
