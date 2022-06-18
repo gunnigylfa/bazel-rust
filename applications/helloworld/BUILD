@@ -1,4 +1,4 @@
-load("@rules_rust//rust:defs.bzl", "rust_binary")
+load("@rules_rust//rust:defs.bzl", "rust_binary", "rustfmt_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -7,4 +7,9 @@ rust_binary(
     srcs = ["src/main.rs"],
     edition = "2018",
     deps = ["//libraries/greeter:greeter_lib"],
+)
+
+rustfmt_test(
+    name = "fmt-check",
+    targets = [":app"]
 )

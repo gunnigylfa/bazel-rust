@@ -1,11 +1,7 @@
 load(
     "@rules_rust//rust:defs.bzl",
-    "rust_doc",
-    "rust_doc_test",
     "rust_library",
-    "rust_shared_library",
-    "rust_static_library",
-    "rust_test",
+    "rustfmt_test"
 )
 
 rust_library(
@@ -20,5 +16,10 @@ rust_library(
 )
 
 package(default_visibility = ["//visibility:public"])
+
+rustfmt_test(
+    name = "fmt-check",
+    targets = [":greeter_lib"]
+)
 
 
