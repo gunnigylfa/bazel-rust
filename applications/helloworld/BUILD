@@ -1,0 +1,10 @@
+load("@rules_rust//rust:defs.bzl", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_binary(
+    name = "app",
+    srcs = ["src/main.rs"],
+    edition = "2018",
+    deps = ["//libraries/greeter:greeter_lib"],
+)
