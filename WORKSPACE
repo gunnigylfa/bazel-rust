@@ -19,15 +19,10 @@ load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_regi
 
 rules_rust_dependencies()
 
-rust_register_toolchains()
+# Optionally specifiy the edition and version of rust to use for the project
+rust_register_toolchains(edition = "2021", include_rustc_srcs = True)
 
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
-
-rust_repositories(
-    edition = "2018",
-    include_rustc_srcs = True,
-    version = "1.54.0",
-)
 
 # Rust analyzer
 load("@rules_rust//tools/rust_analyzer:deps.bzl", "rust_analyzer_deps")

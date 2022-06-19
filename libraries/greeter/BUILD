@@ -11,11 +11,11 @@ rust_library(
         "src/lib.rs",
     ],
     crate_features = ["default"],
-    edition = "2018",
     rustc_flags = ["--cap-lints=allow"],
 )
 
 package(default_visibility = ["//visibility:public"])
+
 
 rustfmt_test(
     name = "fmt-check",
