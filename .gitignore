@@ -1,3 +1,8 @@
 .ijwb/
 .vscode/
 rust-project.json
+
+
+# Bazel generated stuff
+/bazel-*
+
