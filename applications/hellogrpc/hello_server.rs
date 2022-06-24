@@ -1,12 +1,12 @@
 extern crate grpc;
-extern crate helloworld_proto;
+extern crate hello_rust_grpc;
 extern crate tls_api_stub;
 
 use std::env;
 use std::str::FromStr;
 use std::thread;
 
-use helloworld_proto::*;
+use hello_rust_grpc::*;
 
 struct GreeterImpl;
 
