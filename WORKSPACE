@@ -29,29 +29,28 @@ load("@rules_rust//tools/rust_analyzer:deps.bzl", "rust_analyzer_deps")
 
 rust_analyzer_deps()
 
-# Crate universe dependencies without Cargo
-load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencies")
-load("@rules_rust//crate_universe:defs.bzl", "crates_repository", "crate", "render_config")
+## Cargo raze rules
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-crate_universe_dependencies()
-
-crates_repository(
-    name = "crates",
-    packages = {
-            "tokio": crate.spec(
-                version = "1.12.0",
-            ),
-        },
-    # REPIN=1 bazel build ...
-    lockfile = "//:Cargo.Bazel.lock",
-    render_config = render_config(
-        default_package_name = ""
-    ),
+http_archive(
+    name = "cargo_raze",
+    sha256 = "58ecdbae2680b71edc19a0f563cdb73e66c8914689b6edab258c8b90a93b13c7",
+    strip_prefix = "cargo-raze-0.15.0",
+    url = "https://github.com/google/cargo-raze/archive/v0.15.0.tar.gz",
 )
 
-load("@crates//:defs.bzl", "crate_repositories")
+load("@cargo_raze//:repositories.bzl", "cargo_raze_repositories")
 
-crate_repositories()
+cargo_raze_repositories()
+
+load("@cargo_raze//:transitive_deps.bzl", "cargo_raze_transitive_deps")
+
+cargo_raze_transitive_deps()
+
+## enable remote fetching
+load("//cargo:crates.bzl", "raze_fetch_remote_crates")
+
+raze_fetch_remote_crates()
 
 ### Rules proto
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
