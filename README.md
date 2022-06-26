@@ -20,14 +20,27 @@ You can run the example application by running:
 bazel run //applications/helloworld:app
 ```
 
-
 ## Dependency management
-This project relies solely on bazel for dependency management and uses [`crate_universe`](https://bazelbuild.github.io/rules_rust/crate_universe.html) to do so. In order to add a new dependency navigate to the 
-[project WORKSPACE file](./WORKSPACE) and after adding the dependency there you will need to re-render  the lock file by running: 
-``` 
-CARGO_BAZEL_REPIN=1 bazel sync --only=crates
+This project relies solely on bazel for dependency management and uses [`cargo-raze`](https://github.com/google/cargo-raze) to do so. In order to add a new dependency navigate to the 
+[project Cargo.toml file](./Cargo.toml) and after adding the dependency there you will need to resolve the dependency file by running:
 ```
-
+bazel run --legacy_external_runfiles @cargo_raze//:raze -- --manifest-path=$(realpath ./Cargo.toml)
+```
+After doing that the `Cargo.raze.lock`file should be updated and you able to use the new dependency.
+### Using third party dependencies
+Simply add it to the deps section of the `rust_library` or `rust_binary` like so:
+```skylark
+rust_binary(
+    name = "app",
+    srcs = ["src/main.rs"],
+    deps = [
+        "//libraries/greeter:greeter_lib",
+        "//cargo:env_logger",
+        "//cargo:log",
+        "//cargo:rand",
+    ]
+)
+```
 ## Editor Support
 
 Currently it seems bazel and rust only play along well when using vscode and the `rust-analyser` plugin.

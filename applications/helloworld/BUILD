@@ -10,10 +10,7 @@ rust_binary(
         "//cargo:env_logger",
         "//cargo:log",
         "//cargo:rand",
-    ],
-    rustc_env = {
-        "RUST_LOG": "INFO"
-    }
+    ]
 )
 
 rustfmt_test(
