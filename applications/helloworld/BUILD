@@ -9,6 +9,7 @@ rust_binary(
         "//libraries/greeter:greeter_lib",
         "//cargo:env_logger",
         "//cargo:log",
+        "//cargo:rand",
     ],
     rustc_env = {
         "RUST_LOG": "INFO"

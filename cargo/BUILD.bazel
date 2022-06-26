@@ -31,6 +31,15 @@ alias(
 )
 
 alias(
+    name = "rand",
+    actual = "@raze__rand__0_8_5//:rand",
+    tags = [
+        "cargo-raze",
+        "manual",
+    ],
+)
+
+alias(
     name = "tokio",
     actual = "@raze__tokio__1_12_0//:tokio",
     tags = [

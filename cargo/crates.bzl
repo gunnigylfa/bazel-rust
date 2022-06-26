@@ -60,6 +60,15 @@ def raze_fetch_remote_crates():
 
     maybe(
         http_archive,
+        name = "raze__getrandom__0_2_7",
+        url = "https://crates.io/api/v1/crates/getrandom/0.2.7/download",
+        type = "tar.gz",
+        strip_prefix = "getrandom-0.2.7",
+        build_file = Label("//cargo/remote:BUILD.getrandom-0.2.7.bazel"),
+    )
+
+    maybe(
+        http_archive,
         name = "raze__hermit_abi__0_1_19",
         url = "https://crates.io/api/v1/crates/hermit-abi/0.1.19/download",
         type = "tar.gz",
@@ -116,6 +125,42 @@ def raze_fetch_remote_crates():
 
     maybe(
         http_archive,
+        name = "raze__ppv_lite86__0_2_16",
+        url = "https://crates.io/api/v1/crates/ppv-lite86/0.2.16/download",
+        type = "tar.gz",
+        strip_prefix = "ppv-lite86-0.2.16",
+        build_file = Label("//cargo/remote:BUILD.ppv-lite86-0.2.16.bazel"),
+    )
+
+    maybe(
+        http_archive,
+        name = "raze__rand__0_8_5",
+        url = "https://crates.io/api/v1/crates/rand/0.8.5/download",
+        type = "tar.gz",
+        strip_prefix = "rand-0.8.5",
+        build_file = Label("//cargo/remote:BUILD.rand-0.8.5.bazel"),
+    )
+
+    maybe(
+        http_archive,
+        name = "raze__rand_chacha__0_3_1",
+        url = "https://crates.io/api/v1/crates/rand_chacha/0.3.1/download",
+        type = "tar.gz",
+        strip_prefix = "rand_chacha-0.3.1",
+        build_file = Label("//cargo/remote:BUILD.rand_chacha-0.3.1.bazel"),
+    )
+
+    maybe(
+        http_archive,
+        name = "raze__rand_core__0_6_3",
+        url = "https://crates.io/api/v1/crates/rand_core/0.6.3/download",
+        type = "tar.gz",
+        strip_prefix = "rand_core-0.6.3",
+        build_file = Label("//cargo/remote:BUILD.rand_core-0.6.3.bazel"),
+    )
+
+    maybe(
+        http_archive,
         name = "raze__regex__1_5_6",
         url = "https://crates.io/api/v1/crates/regex/1.5.6/download",
         type = "tar.gz",
@@ -149,6 +194,15 @@ def raze_fetch_remote_crates():
         sha256 = "c2c2416fdedca8443ae44b4527de1ea633af61d8f7169ffa6e72c5b53d24efcc",
         strip_prefix = "tokio-1.12.0",
         build_file = Label("//cargo/remote:BUILD.tokio-1.12.0.bazel"),
+    )
+
+    maybe(
+        http_archive,
+        name = "raze__wasi__0_11_0_wasi_snapshot_preview1",
+        url = "https://crates.io/api/v1/crates/wasi/0.11.0+wasi-snapshot-preview1/download",
+        type = "tar.gz",
+        strip_prefix = "wasi-0.11.0+wasi-snapshot-preview1",
+        build_file = Label("//cargo/remote:BUILD.wasi-0.11.0+wasi-snapshot-preview1.bazel"),
     )
 
     maybe(
