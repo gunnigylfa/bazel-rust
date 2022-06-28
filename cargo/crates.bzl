@@ -188,12 +188,11 @@ def raze_fetch_remote_crates():
 
     maybe(
         http_archive,
-        name = "raze__tokio__1_12_0",
-        url = "https://crates.io/api/v1/crates/tokio/1.12.0/download",
+        name = "raze__tokio__1_13_1",
+        url = "https://crates.io/api/v1/crates/tokio/1.13.1/download",
         type = "tar.gz",
-        sha256 = "c2c2416fdedca8443ae44b4527de1ea633af61d8f7169ffa6e72c5b53d24efcc",
-        strip_prefix = "tokio-1.12.0",
-        build_file = Label("//cargo/remote:BUILD.tokio-1.12.0.bazel"),
+        strip_prefix = "tokio-1.13.1",
+        build_file = Label("//cargo/remote:BUILD.tokio-1.13.1.bazel"),
     )
 
     maybe(
