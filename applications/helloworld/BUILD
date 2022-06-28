@@ -5,7 +5,12 @@ package(default_visibility = ["//visibility:public"])
 rust_binary(
     name = "app",
     srcs = ["src/main.rs"],
-    deps = ["//libraries/greeter:greeter_lib"],
+    deps = [
+        "//libraries/greeter:greeter_lib",
+        "//cargo:env_logger",
+        "//cargo:log",
+        "//cargo:rand",
+    ]
 )
 
 rustfmt_test(
