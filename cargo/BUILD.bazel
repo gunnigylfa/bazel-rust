@@ -41,7 +41,7 @@ alias(
 
 alias(
     name = "tokio",
-    actual = "@raze__tokio__1_12_0//:tokio",
+    actual = "@raze__tokio__1_13_1//:tokio",
     tags = [
         "cargo-raze",
         "manual",
